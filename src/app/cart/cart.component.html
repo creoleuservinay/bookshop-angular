@@ -1,0 +1,11 @@
+<div class="container cart-container">
+  <p>Your cart</p>
+  <div *ngIf="cartItems().length > 0">
+    <div *ngFor="let cartItem of cartItems()">
+      <p>Name: {{cartItem.name}} - Price: {{cartItem.price}}</p>
+    </div>
+  </div>
+  <div *ngIf="cartItems().length == 0">
+    Nothing here please add!
+  </div>
+</div>

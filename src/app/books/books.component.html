@@ -1,0 +1,10 @@
+<div class="container">
+  <!-- <button class="btn btn-primary" (click)="manageBook(!isShowing ? true : false)">{{ !isShowing ? 'Show Books' : 'Hide Books' }}</button> -->
+  <div class="row" *ngIf="isShowing">
+    <div class="col-md-10">
+      <div class=""  *ngFor="let singlebook of books">
+        <app-book (bookEmitter)="addToCart($event)" [booksingle]="singlebook"></app-book>
+      </div>
+    </div>
+  </div>
+</div>
