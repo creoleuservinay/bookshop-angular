@@ -9,10 +9,11 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
 import { BooksService } from "./books/books.service";
 import { BooksModule } from "./books/books.module";
 import { CartComponent } from './cart/cart.component';
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [AppComponent, AppHeaderComponent, AppFooterComponent, CartComponent],
-  imports: [BrowserModule, FormsModule, BooksModule],
+  imports: [BrowserModule, FormsModule, BooksModule, AppRoutingModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {

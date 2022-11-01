@@ -1,13 +1,8 @@
-<div class="row main-repeater">
-  <div class="col-md-4">
+  <div class="">
     <img [src]="booksingle.imageUrl" alt="" style="height: 100px;" class="img-fluid">
     <p class="main-title">{{ booksingle.name }}</p>
-    <button *ngIf="!isInCart" class="btn btn-primary" (click)="addToCart()">Add to cart</button>
+    <button *ngIf="!isInCart" class="btn btn-warning" (click)="addToCart()">Add to cart</button>
     <button *ngIf="isInCart" class="btn btn-danger" (click)="removeFromCart()">Remove from cart</button>
-
-  </div>
-  <div class="col-md-4">
   <p class="main-title"> {{ booksingle.price |  currency: 'USD'}}</p>
    <p class="main-description"> {{ booksingle.description }} </p>
-  </div>
-</div>
+   </div>
