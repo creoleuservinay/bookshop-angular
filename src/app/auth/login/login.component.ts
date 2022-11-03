@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/types/login';
 import { Register } from 'src/app/types/register';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -12,25 +13,18 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 })
 export class LoginComponent implements OnInit {
   
-  constructor() { }
+  constructor(private authService: AuthService) { }
   form: Login = {
     email: '',
     password: '',
   }
  
-  login() {
-        const auth = getAuth();
-          signInWithEmailAndPassword(auth, this.form.email , this.form.password)
-            .then((userCredential) => {
-              // Signed in 
-              const user = userCredential.user;
-              console.log(user, 'Logged in')
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              alert('Unauthorished')
-            });
+    login() {
+      this.authService.login(this.form)
+  }
+
+  isLoading() {
+    return this.authService.isLoading
   }
 
   

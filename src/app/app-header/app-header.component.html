@@ -1,6 +1,28 @@
-<nav>
-  <a  routerLink="" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Book shop</a>
-  <a  routerLink="/cart" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My cart</a>
-  <a  routerLink="/login" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-  <a  routerLink="/register" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Knowledge Train</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/cart" class="nav-link">My cart</a>
+      </li>
+      <ng-container *ngIf="!isAuthenticated()">
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register" class="nav-link">Register</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated()">
+        <li class="nav-item">
+          <a (click)="logout()" class="nav-link">Logout</a>
+        </li>
+      </ng-container>
+    </ul>
+</div>
+</div>
 </nav>
