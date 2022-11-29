@@ -17,24 +17,24 @@ export class AuthService {
 
   isLoading: boolean = false
   isAuthenticated: boolean = false
- 
+
   // Firebase Login
   login(form: Login) {
-    if(this.isLoading) return
+    if (this.isLoading) return
     this.isLoading = true
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, form.email , form.password)
+    signInWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         const user = userCredential.user;
         this.isAuthenticated = true
-        this.response.showSuccess({status: "OK", message: 'Logged in'})
+        this.response.showSuccess({ status: "OK", message: 'Logged in' })
         this.router.navigate(['']);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         this.isAuthenticated = false
-        this.response.showError({status: "FAIL", message: 'Wrong email or password!!'})
+        this.response.showError({ status: "FAIL", message: errorMessage })
 
       }).finally(() => (this.isLoading = false));
   }
@@ -42,22 +42,22 @@ export class AuthService {
   // Firebase Register
   register(registerform: Register) {
     const auth = getAuth();
-    if(this.isLoading) return
+    if (this.isLoading) return
     this.isLoading = true
-    createUserWithEmailAndPassword(auth, registerform.email,  registerform.password)
+    createUserWithEmailAndPassword(auth, registerform.email, registerform.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        this.response.showSuccess({status: "OK", message: 'Congratulation! You are registered successfully'})
+        this.response.showSuccess({ status: "OK", message: 'Congratulation! You are registered successfully' })
         this.router.navigate(['/login']);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        this.response.showError({status: "FAIL", message: 'Something went wrong! please check inputs'})
+        this.response.showError({ status: "FAIL", message: errorMessage })
       }).finally(() => (this.isLoading = false))
   }
   // Logout
-  logout(){
+  logout() {
     const auth = getAuth();
     signOut(auth).then(() => {
       this.isAuthenticated = false

@@ -1,26 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Book } from '../types/books.model';
 import { BooksService } from './books.service';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BooksComponent implements OnInit, OnDestroy {
   isShowing = true
   books: Book[] = []
-  
   constructor(private bookService: BooksService) { }
-  manageBook(operation: boolean){
-    this.isShowing = operation
-  }
-  addToCart(book: any){
-    console.log(book)
+  getBookList(){
+    return this.bookService.getBooks()
   }
 
   ngOnInit(): void {
-    this.books = this.bookService.getBooks()
   }
   ngOnDestroy(): void {
     console.log('Here bookd ngOnDestroy')

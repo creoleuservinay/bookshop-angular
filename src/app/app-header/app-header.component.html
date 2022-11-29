@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a routerLink="/cart" class="nav-link">My cart</a>
+        <a routerLink="/cart" class="nav-link">My cart<span> ({{ cartCount() }})</span></a>
       </li>
       <ng-container *ngIf="!isAuthenticated()">
         <li class="nav-item">

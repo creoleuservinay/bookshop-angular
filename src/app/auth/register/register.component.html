@@ -24,14 +24,14 @@
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="isLoading()">
           <ng-container *ngIf="isLoading()">Loading..</ng-container>
-          <ng-container *ngIf="!isLoading()">Login</ng-container>
+          <ng-container *ngIf="!isLoading()">Register</ng-container>
         </button>      
       </form>
       
     </div>
   </div>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     {{  userForm.value | json }}
     <form #userForm="ngForm">
       <div class="form-group">
@@ -43,4 +43,4 @@
         <input type="email" name="email" ngModel>
       </div>
     </form>
-  </div>
+  </div> -->

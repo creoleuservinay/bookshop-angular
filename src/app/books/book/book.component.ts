@@ -17,19 +17,16 @@ export class BookComponent implements OnInit, OnDestroy {
   constructor(
     private cartService: CartService
     ) { }
-   @Output() bookEmitter = new EventEmitter<Book>();
 
   addToCart(){
-    console.log('Add to cart component!!!!', this.booksingle);
     this.isInCart = true
     this.cartService.add(this.booksingle)
   }
-
-  removeFromCart() {
+  removeFromCart()
+  {
     this.isInCart = false
     this.cartService.remove(this.booksingle)
   }
-
   ngOnInit(): void {
   }
 

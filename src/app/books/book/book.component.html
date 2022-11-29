@@ -1,6 +1,6 @@
     <img [src]="booksingle.imageUrl" alt="" style="height: 100px;" class="img-fluid">
     <p class="main-title">{{ booksingle.name }}</p>
-    <button *ngIf="!isInCart" class="btn btn-warning" (click)="addToCart()">Add to cart</button>
+    <button *ngIf="!isInCart" class="btn btn-warning add-to-cart-btn" (click)="addToCart()">Add to cart</button>
     <button *ngIf="isInCart" class="btn btn-danger" (click)="removeFromCart()">Remove from cart</button>
   <p class="main-title"> {{ booksingle.price |  currency: 'USD'}}</p>
    <p class="main-description"> {{ booksingle.description }} </p>

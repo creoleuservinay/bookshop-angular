@@ -1,9 +1,7 @@
 <div class="container text-center">
   <div class="row">
-  <!-- <button class="btn btn-primary" (click)="manageBook(!isShowing ? true : false)">{{ !isShowing ? 'Show Books' : 'Hide Books' }}</button> -->
-  <div class="" *ngIf="isShowing">
-      <div class="col-md-4"  *ngFor="let singlebook of books">
-        <app-book (bookEmitter)="addToCart($event)" [booksingle]="singlebook"></app-book>
+      <div class="col-md-4"  *ngFor="let singlebook of getBookList()">
+        <app-book [booksingle]="singlebook"></app-book>
       </div>
-</div>
+
 </div>

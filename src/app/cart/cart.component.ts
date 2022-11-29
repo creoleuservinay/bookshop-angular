@@ -9,12 +9,12 @@ import { CartService } from './cart.service';
 export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService) { }
-
-  ngOnInit(): void {
-  }
-
+  
   cartItems() {
     return this.cartService.get()
+  }
+
+  ngOnInit(): void {
   }
 
 }
