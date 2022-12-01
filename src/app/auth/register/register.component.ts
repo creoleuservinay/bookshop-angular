@@ -12,9 +12,11 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
   registerform: Register = {
+    firstname: '',
+    lastname: '', 
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmpassword: ''
   }
   register() {
     this.authService.register(this.registerform)

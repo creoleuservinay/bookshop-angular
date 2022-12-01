@@ -10,12 +10,14 @@ export class ResponseService {
   constructor(private toastr: ToastrService,) { }
   showSuccess(response: ResponseParam) {
     this.toastr.success(response.message, response.status, {
-      progressBar: true
+      progressBar: true,
+      timeOut: 2000 
     });
   }
   showError(response: ResponseParam) {
     this.toastr.error(response.message, response.status, {
-      progressBar: true
+      progressBar: true,
+      timeOut: 2000
     });
   }
 }

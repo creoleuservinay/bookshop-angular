@@ -1,8 +1,11 @@
 <div class="container cart-container">
-  <p>Your cart</p>  
   <div *ngIf="cartItems().items.length <= 0">
-    <img src="https://fakeimg.pl/350x200/ff0000,128/000,255">
-  </div>
+  <img src="https://i.ibb.co/nM0yqb3/Bookstore-1.png" alt="Bookstore-1" border="0">  
+    <p class="text-center">
+      <a class="navbar-brand" routerLink="">Shop now</a>
+
+    </p>
+</div>
   
 
   <div *ngIf="cartItems().items.length > 0">
@@ -22,6 +25,8 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ cartItem.name }}</td>
           <td>{{ cartItem.price }}</td>
+          <td></td>
+          <td><button class="btn btn-danger" (click)="removeFromCart(cartItem)">Remove</button></td>
         </tr>
       </tbody>
     </table>

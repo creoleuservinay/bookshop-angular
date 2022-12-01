@@ -3,6 +3,14 @@
     <div class="col-md-4 offset-md-3">
       <form (ngSubmit)="register()">
         <div class="form-group">
+          <label for="exampleInputEmail1">First name</label>
+          <input [(ngModel)]="registerform.firstname"  #firstname="ngModel" name="firstname" type="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Last name</label>
+          <input [(ngModel)]="registerform.lastname"  #lastname="ngModel" name="lastname" type="lastname" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input [(ngModel)]="registerform.email"  #email="ngModel" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
@@ -20,7 +28,7 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Confirm Password</label>
-          <input [(ngModel)]="registerform.confirmPassword" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input [(ngModel)]="registerform.confirmpassword" name="confirmpassword" type="confirmpassword" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="isLoading()">
           <ng-container *ngIf="isLoading()">Loading..</ng-container>

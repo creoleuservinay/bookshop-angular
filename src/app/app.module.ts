@@ -13,12 +13,17 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AuthModule } from "./auth/auth.module";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, AppHeaderComponent, AppFooterComponent, CartComponent],
-  imports: [BrowserModule, BooksModule, AppRoutingModule, AuthModule, 
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BooksModule, AppRoutingModule, AuthModule, 
     ToastrModule.forRoot(),
-    BrowserAnimationsModule // ToastrModule added
+    BrowserAnimationsModule, // ToastrModule added
+    
   ],
   bootstrap: [AppComponent]
 })

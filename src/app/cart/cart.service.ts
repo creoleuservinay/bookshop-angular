@@ -20,8 +20,7 @@ cart: Book[] = []
   get() {   
     return {
       items: this.cart,
-      total:  this.cart.map((item) => item.price).reduce((currval : number, preVal: number) =>  currval + preVal
-      )
+      total:  this.cart.length > 0 ? this.cart.map((item) => item.price).reduce((currval : number, preVal: number) =>  currval + preVal) : 0
     }
   }
   cartCount(){
