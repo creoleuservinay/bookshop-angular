@@ -13,7 +13,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AuthModule } from "./auth/auth.module";
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthService } from "./auth/auth.service";
+import { Interceptor } from "./interceptors/interceptor";
+import { ApiHttpService } from "./http-service/httpService";
 
 @NgModule({
   declarations: [AppComponent, AppHeaderComponent, AppFooterComponent, CartComponent],
@@ -23,7 +26,11 @@ import { HttpClientModule } from "@angular/common/http";
     BooksModule, AppRoutingModule, AuthModule, 
     ToastrModule.forRoot(),
     BrowserAnimationsModule, // ToastrModule added
-    
+  ],
+  providers: [
+    AuthService,
+    ApiHttpService,
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

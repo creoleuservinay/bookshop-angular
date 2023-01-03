@@ -9,7 +9,7 @@ const routes: Routes = [{
   path: '', component: BooksComponent,
 },
 {
-  path: 'cart', component: CartComponent //canActivate: [AuthGuard]
+  path: 'cart', component: CartComponent, canActivate: [AuthGuard]
 },
 {
   path: 'login', component: LoginComponent

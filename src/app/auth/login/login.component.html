@@ -10,9 +10,9 @@
           <label for="exampleInputPassword1">Password</label>
           <input [(ngModel)]="form.password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="isLoading()">
-          <ng-container *ngIf="isLoading()">Loading..</ng-container>
-          <ng-container *ngIf="!isLoading()">Login</ng-container>
+        <button type="submit" class="btn btn-primary">
+          <!-- <ng-container *ngIf="isLoading()">Loading..</ng-container> -->
+          <ng-container>Login</ng-container>
         </button>
       </form>
     </div>

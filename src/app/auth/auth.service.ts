@@ -6,6 +6,7 @@ import { Register } from '../types/register';
 import { ToastrService } from 'ngx-toastr';
 import { ResponseService } from '../response/response.service';
 import { HttpClient } from '@angular/common/http'; 
+import { ApiHttpService } from '../http-service/httpService';
 
 @Injectable({
   providedIn: 'root'
@@ -13,37 +14,32 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
 
   constructor(
-    private response: ResponseService,
-    private router: Router,
-    private http: HttpClient
+      private response: ResponseService,
+      private router: Router,
+      private http: HttpClient,
+      private apiHttpService : ApiHttpService
     ) { }
 
   isLoading: boolean = false
   isAuthenticated: boolean = false
+  isAuthenticate() {
+    const token =  localStorage.getItem('access-token') ||  '';
+    if(token) {
+      this.isAuthenticated = true
+    }
+    return this.isAuthenticated
+  }
 
   // Firebase Login
-  login(formData: Login) {
+  login(formData: Login): any {
     if (this.isLoading) return
     this.isLoading = true
 
     const body = formData
     //**************************NodeJs***********************************************
     const url = 'http://localhost:3000/api/v1/login/';
-    const responseData =  this.http.post(url, body).subscribe({
-      next: data => {
-        this.response.showSuccess({ status: "OK", message: 'Logged In' })
-        this.isLoading = false
-        this.router.navigate(['/cart']);
-
-      },
-      error: error => {
-        console.log(error.error.message)
-          const errorMessage = error.error.message;
-          this.response.showError({ status: "FAIL", message: errorMessage})
-          this.isLoading = false
-          this.router.navigate(['/login']);
-        }
-    })
+    // return this.http.post(url, body)
+    return this.apiHttpService.post(url ,body)
     //*******************************Firebase login **************************/
     // const auth = getAuth();
     // signInWithEmailAndPassword(auth, form.email, form.password)
@@ -58,7 +54,6 @@ export class AuthService {
     //     const errorMessage = error.message;
     //     this.isAuthenticated = false
     //     this.response.showError({ status: "FAIL", message: errorMessage })
-
     //   }).finally(() => (this.isLoading = false));
   }
 
@@ -72,7 +67,7 @@ export class AuthService {
     const body = registerform
     //**************************NodeJs***********************************************
     const url = 'http://localhost:3000/api/v1/users/';
-    const responseData =  this.http.post(url, body).subscribe( {
+    const registerApi =  this.http.post(url, body).subscribe( {
       next: data => {
         this.response.showSuccess({ status: "OK", message: 'Congratulation! You are registered successfully' })
         this.isLoading = false
@@ -101,11 +96,14 @@ export class AuthService {
   }
   // Logout
   logout() {
-    const auth = getAuth();
-    signOut(auth).then(() => {
-      this.isAuthenticated = false
-      this.router.navigate(['login']);
-    }).catch((error) => {
-    });
+    localStorage.removeItem("access-token");
+    this.isAuthenticated = false
+    this.router.navigate(['/']);
+    // const auth = getAuth();
+    // signOut(auth).then(() => {
+    //   this.isAuthenticated = false
+    //   this.router.navigate(['login']);
+    // }).catch((error) => {
+    // });
   }
 }

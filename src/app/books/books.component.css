@@ -4,3 +4,12 @@
 .hide-books {
   display: none
 }
+
+.priceAlertShow{
+  background-color: red;
+  display: block;
+}
+
+.priceAlertHide{
+  display: none;
+}
